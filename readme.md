@@ -132,5 +132,5 @@ Start → Fetch from API → Transform Data → Insert into PostgreSQL → End
 
 ## 📄 License
 
-This project is licensed under the [MIT License](../LICENSE).
+This project is licensed under the [MIT License](./LICENSE).
 
