@@ -1,0 +1,30 @@
+[2025-07-04T03:03:24.779+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_ingest_dag.fetch_and_insert manual__2025-07-04T02:51:45.894365+00:00 [queued]>
+[2025-07-04T03:03:24.791+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_ingest_dag.fetch_and_insert manual__2025-07-04T02:51:45.894365+00:00 [queued]>
+[2025-07-04T03:03:24.792+0000] {taskinstance.py:1359} INFO - Starting attempt 5 of 5
+[2025-07-04T03:03:24.814+0000] {taskinstance.py:1380} INFO - Executing <Task(BashOperator): fetch_and_insert> on 2025-07-04 02:51:45.894365+00:00
+[2025-07-04T03:03:24.825+0000] {standard_task_runner.py:57} INFO - Started process 269 to run task
+[2025-07-04T03:03:24.829+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'weather_ingest_dag', 'fetch_and_insert', 'manual__2025-07-04T02:51:45.894365+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/weather_ingest_dag.py', '--cfg-path', '/tmp/tmp_3bjny6v']
+[2025-07-04T03:03:24.833+0000] {standard_task_runner.py:85} INFO - Job 13: Subtask fetch_and_insert
+[2025-07-04T03:03:25.555+0000] {task_command.py:415} INFO - Running <TaskInstance: weather_ingest_dag.fetch_and_insert manual__2025-07-04T02:51:45.894365+00:00 [running]> on host b87c05c3cf38
+[2025-07-04T03:03:26.021+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='harsha' AIRFLOW_CTX_DAG_ID='weather_ingest_dag' AIRFLOW_CTX_TASK_ID='fetch_and_insert' AIRFLOW_CTX_EXECUTION_DATE='2025-07-04T02:51:45.894365+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-04T02:51:45.894365+00:00'
+[2025-07-04T03:03:26.034+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-07-04T03:03:26.047+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'python /opt/airflow/dags/fetch_weather.py']
+[2025-07-04T03:03:26.080+0000] {subprocess.py:86} INFO - Output:
+[2025-07-04T03:03:28.011+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-07-04T03:03:28.012+0000] {subprocess.py:93} INFO -   File "/opt/airflow/dags/fetch_weather.py", line 76, in <module>
+[2025-07-04T03:03:28.013+0000] {subprocess.py:93} INFO -     raw_data = fetch_weather_data()
+[2025-07-04T03:03:28.014+0000] {subprocess.py:93} INFO -   File "/opt/airflow/dags/fetch_weather.py", line 23, in fetch_weather_data
+[2025-07-04T03:03:28.015+0000] {subprocess.py:93} INFO -     response.raise_for_status()
+[2025-07-04T03:03:28.016+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.8/site-packages/requests/models.py", line 1021, in raise_for_status
+[2025-07-04T03:03:28.017+0000] {subprocess.py:93} INFO -     raise HTTPError(http_error_msg, response=self)
+[2025-07-04T03:03:28.018+0000] {subprocess.py:93} INFO - requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/forecast?lat=42.3865&lon=-71.0228&cnt=10&appid=None&mode=json
+[2025-07-04T03:03:28.059+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-07-04T03:03:28.091+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 210, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-07-04T03:03:28.098+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=weather_ingest_dag, task_id=fetch_and_insert, execution_date=20250704T025145, start_date=20250704T030324, end_date=20250704T030328
+[2025-07-04T03:03:28.129+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 13 for task fetch_and_insert (Bash command failed. The command returned a non-zero exit code 1.; 269)
+[2025-07-04T03:03:28.180+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-07-04T03:03:28.232+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

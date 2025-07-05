@@ -1,0 +1,22 @@
+[2025-07-04T04:22:46.927+0000] {taskinstance.py:1147} INFO - Dependencies not met for <TaskInstance: weather_ingest_dag.fetch_and_insert scheduled__2025-07-04T03:00:00+00:00 [success]>, dependency 'Task Instance State' FAILED: Task is in the 'success' state.
+[2025-07-04T04:22:46.940+0000] {local_task_job_runner.py:154} INFO - Task is not able to be run
+[2025-07-04T04:22:55.865+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_ingest_dag.fetch_and_insert scheduled__2025-07-04T03:00:00+00:00 [queued]>
+[2025-07-04T04:22:55.879+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_ingest_dag.fetch_and_insert scheduled__2025-07-04T03:00:00+00:00 [queued]>
+[2025-07-04T04:22:55.880+0000] {taskinstance.py:1359} INFO - Starting attempt 3 of 4
+[2025-07-04T04:22:55.901+0000] {taskinstance.py:1380} INFO - Executing <Task(BashOperator): fetch_and_insert> on 2025-07-04 03:00:00+00:00
+[2025-07-04T04:22:55.911+0000] {standard_task_runner.py:57} INFO - Started process 280 to run task
+[2025-07-04T04:22:55.914+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'weather_ingest_dag', 'fetch_and_insert', 'scheduled__2025-07-04T03:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/weather_ingest_dag.py', '--cfg-path', '/tmp/tmp26m0tss5']
+[2025-07-04T04:22:55.920+0000] {standard_task_runner.py:85} INFO - Job 5: Subtask fetch_and_insert
+[2025-07-04T04:22:56.079+0000] {task_command.py:415} INFO - Running <TaskInstance: weather_ingest_dag.fetch_and_insert scheduled__2025-07-04T03:00:00+00:00 [running]> on host 1025ec15db0d
+[2025-07-04T04:22:56.254+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='harsha' AIRFLOW_CTX_DAG_ID='weather_ingest_dag' AIRFLOW_CTX_TASK_ID='fetch_and_insert' AIRFLOW_CTX_EXECUTION_DATE='2025-07-04T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-04T03:00:00+00:00'
+[2025-07-04T04:22:56.267+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-07-04T04:22:56.274+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'python /opt/airflow/dags/fetch_weather.py']
+[2025-07-04T04:22:56.301+0000] {subprocess.py:86} INFO - Output:
+[2025-07-04T04:22:58.287+0000] {subprocess.py:93} INFO - 2025-07-04 04:22:58,286 - INFO - Number of records fetched from API: 40
+[2025-07-04T04:22:58.289+0000] {subprocess.py:93} INFO - 2025-07-04 04:22:58,287 - INFO - Number of parsed records: 40
+[2025-07-04T04:22:58.343+0000] {subprocess.py:93} INFO - 2025-07-04 04:22:58,343 - INFO - Weather data inserted into Postgres successfully.
+[2025-07-04T04:22:58.344+0000] {subprocess.py:93} INFO - API Key is: 7d6a64fd9c0466f533754585e33e4406
+[2025-07-04T04:22:58.374+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-07-04T04:22:58.440+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=weather_ingest_dag, task_id=fetch_and_insert, execution_date=20250704T030000, start_date=20250704T042255, end_date=20250704T042258
+[2025-07-04T04:22:58.502+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-07-04T04:22:58.526+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
