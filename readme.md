@@ -41,9 +41,17 @@ cd weather_api_ingestion/airflow
 Create a .env file inside the airflow/ folder with the following:
 
 OPENWEATHER_API_KEY=your_api_key
-LATITUDE=12.9716
-LONGITUDE=77.5946
+LATITUDE= 
+LONGITUDE= 
 
+## 🔗 API Reference
+
+This project uses the **5-day / 3-hour forecast API** from [OpenWeatherMap](https://openweathermap.org/forecast5). The request URL format used in the DAG is:
+
+```python
+URL = f"https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&cnt=40&appid={API_KEY}&mode=json"
+
+```
 ---
 
 ### 3. Start the Services
@@ -122,4 +130,7 @@ weather_api_ingestion/
 Start → Fetch from API → Transform Data → Insert into PostgreSQL → End
 
 
+## 📄 License
+
+This project is licensed under the [MIT License](../LICENSE).
 
